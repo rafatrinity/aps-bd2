@@ -1,14 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
+-- version 4.5.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 12-Abr-2017 às 18:29
--- Versão do servidor: 5.7.17-0ubuntu0.16.04.1
--- PHP Version: 7.0.13-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: 14-Abr-2017 às 05:56
+-- Versão do servidor: 5.7.11
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "-03:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,7 +17,7 @@ SET time_zone = "-03:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Reserva de vagas`
+-- Database: `reserva de vagas`
 --
 
 -- --------------------------------------------------------
@@ -37,13 +37,20 @@ CREATE TABLE `cliente` (
   `Doc` varchar(10) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+--
+-- Extraindo dados da tabela `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `Nome`, `Sobrenome`, `Nacionalidade`, `Nascimento`, `Sexo`, `Doc tipo`, `Doc`) VALUES
+(1, 'Rafael', 'Trindade', 'Brasil', '1995-07-25', 'M', 'RG', '280178328');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Hoteis`
+-- Estrutura da tabela `hoteis`
 --
 
-CREATE TABLE `Hoteis` (
+CREATE TABLE `hoteis` (
   `id` int(4) NOT NULL,
   `Pais` varchar(20) COLLATE latin1_general_ci NOT NULL DEFAULT 'Brasil',
   `Estado` varchar(2) COLLATE latin1_general_ci NOT NULL DEFAULT 'RJ',
@@ -55,10 +62,10 @@ CREATE TABLE `Hoteis` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `Quarto`
+-- Estrutura da tabela `quarto`
 --
 
-CREATE TABLE `Quarto` (
+CREATE TABLE `quarto` (
   `Numero` int(4) NOT NULL,
   `Tipo` enum('Casal','Grupo') COLLATE latin1_general_ci NOT NULL DEFAULT 'Casal',
   `Lotação` int(2) NOT NULL,
@@ -77,16 +84,16 @@ ALTER TABLE `cliente`
   ADD UNIQUE KEY `Doc` (`Doc`);
 
 --
--- Indexes for table `Hoteis`
+-- Indexes for table `hoteis`
 --
-ALTER TABLE `Hoteis`
+ALTER TABLE `hoteis`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `Local` (`Local`(25));
 
 --
--- Indexes for table `Quarto`
+-- Indexes for table `quarto`
 --
-ALTER TABLE `Quarto`
+ALTER TABLE `quarto`
   ADD PRIMARY KEY (`Numero`);
 
 --
@@ -97,11 +104,11 @@ ALTER TABLE `Quarto`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `Hoteis`
+-- AUTO_INCREMENT for table `hoteis`
 --
-ALTER TABLE `Hoteis`
+ALTER TABLE `hoteis`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
